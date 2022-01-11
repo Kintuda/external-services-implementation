@@ -1,0 +1,33 @@
+{
+  "name": "external-services-implementation",
+  "version": "1.0.0",
+  "description": "POC of creating decouples external webservices with DI",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "start": "ts-node-dev --respawn --transpile-only src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kintuda/external-services-implementation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kintuda/external-services-implementation/issues"
+  },
+  "homepage": "https://github.com/Kintuda/external-services-implementation#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "currency.js": "^2.0.4",
+    "got": "^12.0.0",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13"
+  }
+}
