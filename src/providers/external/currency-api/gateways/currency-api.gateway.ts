@@ -3,11 +3,13 @@ import currencyJS from "currency.js";
 export class CurrencyAPIGateway {
   private readonly response: Record<string, string | number>;
 
-  constructor(response: string | Record<string, unknown>) {
+  constructor(response: string | Record<string, string | number>) {
     this.response = this.parseResponse(response);
   }
 
-  public parseResponse(response: string | Record<string, unknown>) {
+  public parseResponse(
+    response: string | Record<string, string | number>
+  ): Record<string, string | number> {
     const isString = typeof response === "string";
 
     if (isString) {

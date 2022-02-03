@@ -6,7 +6,7 @@ import { PROVIDER_SERVICE } from "./providers/providers.type";
 (async () => {
   try {
     const service = container.get<ProviderService>(PROVIDER_SERVICE);
-    const exchangeRate = await service.getCurrencyValue('BRL', 'USD');
+    const exchangeRate = await service.getCurrencyValue('BRL', 'USD', true);
     console.log(exchangeRate);
   } catch (error) {
     console.error(error);

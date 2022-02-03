@@ -1,4 +1,5 @@
 import { inject, injectable } from "inversify";
+import { CurrencyIsInvalid } from "./exceptions/currency-is-invalid.exception";
 
 import { CurrencyExchangeProvider } from "./providers.interface";
 import { CURRENCY_PROVIDER } from "./providers.type";
@@ -12,12 +13,18 @@ export class ProviderService {
 
   public async getCurrencyValue(
     base: string,
-    currency: string
+    currency: string,
+    skipValidation = false
   ): Promise<number> {
-    const isValid = await this.exchangeProvider.isAValidCurrency(currency);
+    if (!skipValidation) {
+      const isValid = await this.exchangeProvider.isAValidCurrency(currency);
 
-    if (!isValid) {
-      throw new Error(`${currency} is a invalid currency code`);
+      if (!isValid) {
+        throw new CurrencyIsInvalid(
+          this.exchangeProvider.name,
+          `${currency} is a invalid currency code`
+        );
+      }
     }
 
     const result = await this.exchangeProvider.getExchangeRate(base, currency);
